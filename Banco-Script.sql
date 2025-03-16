@@ -7,21 +7,11 @@ CREATE TABLE EMPRESA (
     CNPJ CHAR(14) NOT NULL UNIQUE
 );
 
-CREATE TABLE CARGO (
-    idCARGO INT AUTO_INCREMENT PRIMARY KEY,
-    NOME VARCHAR(50) CONSTRAINT CHK_NOME CHECK (NOME IN ('Técnico', 'Gerente', 'Administrador'))
-);
-
-ALTER TABLE CARGO ADD CONSTRAINT CHK_NOME_CARGO CHECK (NOME IN ('Técnico', 'Gerente', 'Administrador'));
-INSERT INTO CARGO (NOME) VALUES ('Técnico'), ('Gerente'), ('Administrador');
-
 CREATE TABLE USUARIO (
     idUSUARIO INT,
     EMAIL VARCHAR(80) NOT NULL UNIQUE,
     NOME VARCHAR(80) NOT NULL,
     SENHA VARCHAR(60) NOT NULL, 
-    fkCARGO INT NOT NULL,
-    FOREIGN KEY (fkCARGO) REFERENCES CARGO(idCARGO),
     fkEMPRESA INT NOT NULL,
     PRIMARY KEY (idUSUARIO, fkEMPRESA),
     FOREIGN KEY (fkEMPRESA) REFERENCES EMPRESA(idEMPRESA)
@@ -32,14 +22,14 @@ ALTER TABLE USUARIO MODIFY COLUMN idUSUARIO INT auto_increment;
 INSERT INTO Empresa (RAZAO, CNPJ)
 VALUES ('SIMBIOSYS', 'NULL');
 
-INSERT INTO USUARIO (EMAIL, NOME, SENHA, fkCARGO, fkEMPRESA)
+INSERT INTO USUARIO (EMAIL, NOME, SENHA, fkEMPRESA)
 VALUES 
-    ('matheus.torres@sptech.school', 'MATHEUS FERRO TORRES', 'Ferro10', 3, 1),
-    ('reynald.costa@sptech.school', 'REYNALD ALBUQUERQUE COSTA', 'Reynald20', 3, 1),
-    ('marcela.martins@sptech.school', 'MARCELA CARNEIRO DE OLIVEIRA MARTINS', 'Marcela30', 3, 1),
-    ('vitoria.suliman@sptech.school', 'VITÓRIA LEMES SULIMAN', 'Vitoria40', 3, 1),
-    ('cintia.ohara@sptech.school', 'CINTIA KAORY OHARA', 'Cintia50', 3, 1),
-    ('matheus.csilva@sptech.school', 'MATHEUS DE CASTRO SILVA', 'Castro50', 3, 1);
+    ('matheus.torres@sptech.school', 'MATHEUS FERRO TORRES', 'Ferro10', 1),
+    ('reynald.costa@sptech.school', 'REYNALD ALBUQUERQUE COSTA', 'Reynald20', 1),
+    ('marcela.martins@sptech.school', 'MARCELA CARNEIRO DE OLIVEIRA MARTINS', 'Marcela30', 1),
+    ('vitoria.suliman@sptech.school', 'VITÓRIA LEMES SULIMAN', 'Vitoria40', 1),
+    ('cintia.ohara@sptech.school', 'CINTIA KAORY OHARA', 'Cintia50', 1),
+    ('matheus.csilva@sptech.school', 'MATHEUS DE CASTRO SILVA', 'Castro50', 1);
     
     -- Tabelas do Sistema:
     
