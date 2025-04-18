@@ -4,77 +4,73 @@ USE SIMBIOSYS;
 CREATE TABLE Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE unique,
     senha VARCHAR(255) NOT NULL
 );
 
+
 CREATE TABLE Encaminhamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    encBeneficioPrestacaoContinuada INT,
-    encAposentadoria INT,
-    encAssistenciaSocial INT,
-    encCursosProfissionalizantesForaOrganizacao INT,
-    encCursosProfissionalizantesDentroOrganizacao INT,
-    encEducacaoNaoFormal INT,
-    encEducacaoFormal INT,
-    encDocumentos INT,
-    encTrabalho INT,
-    encGeracaoRenda INT,
-    encSaude INT,
-    encTratamentoDrogas INT,
-    encProgramasTransferenciaRenda INT,
-    encPoliticasPublicas INT
+    enc_beneficio_prestacao_continuada INT,
+    enc_aposentadoria INT,
+    enc_assistencia_social INT,
+    enc_cursos_profissionalizantes_fora_organizacao INT,
+    enc_cursos_profissionalizantes_dentro_organizacao INT,
+    enc_educacao_nao_formal INT,
+    enc_educacao_formal INT,
+    enc_documentos INT,
+    enc_trabalho INT,
+    enc_geracao_renda INT,
+    enc_saude INT,
+    enc_tratamento_drogas INT,
+    enc_programas_transferencia_renda INT,
+    enc_politicas_publicas INT
 );
 
-CREATE TABLE OutrosNumeros (
+
+CREATE TABLE outros_numeros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     alimentacao INT,
-    numeroDePessoasPresencial INT,
-    cestasBasicasDoadas INT,
-    kitsHigieneDoados INT,
-    totalParticipantesAtividadeDistancia INT,
-    totalParticipantesAtividadePresencial INT
+    numero_de_pessoas_presencial INT,
+    cestas_basicas_doadas INT,
+    kits_higiene_doados INT,
+    total_participantes_atividade_distancia INT,
+    total_participantes_atividade_presencial INT
 );
 
-CREATE TABLE AcoesRealizadas (
+
+
+CREATE TABLE acoes_realizadas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    totalAtividadesGrupoVirtual INT,
-    totalAtividadesCulturaisExternas INT,
-    totalAtividadesCulturaisVirtuais INT,
-    totalPalestrasPresenciais INT,
-    totalPalestrasVirtuais INT,
-    totalVisitasFamiliaresPresenciais INT,
-    totalVisitasFamiliaresVirtuais INT,
-    totalVisitasMonitoradasPresenciais INT,
-    totalVisitasMonitoradasVirtuais INT,
-    totalCursosMinistradosPresenciais INT,
-    totalCursosMinistradosVirtuais INT,
-    totalPessoasCursosCapacitacaoPresenciais INT,
-    totalPessoasCursosCapacitacaoVirtuais INT,
-    totalPessoasCursosProfissionalizantesPresenciais INT,
-    totalPessoasCursosProfissionalizantesVirtuais INT
+    total_atividades_grupo_virtual INT,
+    total_atividades_culturais_externas INT,
+    total_atividades_culturais_virtuais INT,
+    total_palestras_presenciais INT,
+    total_palestras_virtuais INT,
+    total_visitas_familiares_presenciais INT,
+    total_visitas_familiares_virtuais INT,
+    total_visitas_monitoradas_presenciais INT,
+    total_visitas_monitoradas_virtuais INT,
+    total_cursos_ministrados_presenciais INT,
+    total_cursos_ministrados_virtuais INT,
+    total_pessoas_cursos_capacitacao_presenciais INT,
+    total_pessoas_cursos_capacitacao_virtuais INT,
+    total_pessoas_cursos_profissionalizantes_presenciais INT,
+    total_pessoas_cursos_profissionalizantes_virtuais INT
 );
 
 CREATE TABLE Relatorio (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    mesAno VARCHAR(7) NOT NULL UNIQUE,
-    dataAtualizacao DATETIME NOT NULL,
-    FKencaminhamento INT,
-    FKoutrosNumeros INT,
-    FKacoesRealizadas INT,
+    mes_ano VARCHAR(45) NOT NULL UNIQUE,
+    data_atualizacao DATETIME NOT NULL,
+    fkencaminhamento INT,
+    fkoutros_numeros INT,
+    fkacoes_realizadas INT,
     FOREIGN KEY (FKencaminhamento) REFERENCES Encaminhamento(id),
-    FOREIGN KEY (FKoutrosNumeros) REFERENCES OutrosNumeros(id),
-    FOREIGN KEY (FKacoesRealizadas) REFERENCES AcoesRealizadas(id),
-    fkUsuario INT,
-    FOREIGN KEY (fkUsuario) REFERENCES Usuario(id) ON DELETE CASCADE
-);
-
-CREATE TABLE Atividade (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    descricao TEXT,
-    dataInicio DATE NOT NULL,
-    dataFim DATE NOT NULL
+    FOREIGN KEY (fkoutros_numeros) REFERENCES outros_numeros(id),
+    FOREIGN KEY (fkacoes_realizadas) REFERENCES acoes_realizadas(id),
+    fk_usuario INT,
+    FOREIGN KEY (fk_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
 );
 
 -- Exemplos de Inserts:
