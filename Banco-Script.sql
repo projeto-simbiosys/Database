@@ -4,6 +4,8 @@ USE SIMBIOSYS;
 CREATE TABLE Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
+    sobrenome VARCHAR(255) NOT NULL,
+    cargo VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE unique,
     senha VARCHAR(255) NOT NULL
 );
@@ -77,11 +79,11 @@ CREATE TABLE Relatorio (
 
 INSERT INTO USUARIO (EMAIL, NOME, SENHA)
 VALUES 
-    ('matheus.torres@sptech.school', 'MATHEUS FERRO TORRES', 'Ferro10'),
-    ('reynald.costa@sptech.school', 'REYNALD ALBUQUERQUE COSTA', 'Reynald20'),
-    ('marcela.martins@sptech.school', 'MARCELA CARNEIRO DE OLIVEIRA MARTINS', 'Marcela30'),
-    ('vitoria.suliman@sptech.school', 'VITÓRIA LEMES SULIMAN', 'Vitoria40'),
-    ('cintia.ohara@sptech.school', 'CINTIA KAORY OHARA', 'Cintia50'),
-    ('matheus.csilva@sptech.school', 'MATHEUS DE CASTRO SILVA', 'Castro60');
+    ('matheus.torres@sptech.school', 'MATHEUS', 'FERRO TORRES', 'Assistente Social','Ferro10'),
+    ('reynald.costa@sptech.school', 'REYNALD', 'ALBUQUERQUE COSTA', 'Professor', 'Reynald20'),
+    ('marcela.martins@sptech.school', 'MARCELA', 'CARNEIRO DE OLIVEIRA MARTINS', 'Coordenadora', 'Marcela30'),
+    ('vitoria.suliman@sptech.school', 'VITÓRIA', 'LEMES SULIMAN', 'Assistente Social', 'Vitoria40'),
+    ('cintia.ohara@sptech.school', 'CINTIA', 'KAORY OHARA', 'Assistente Social','Cintia50'),
+    ('matheus.csilva@sptech.school', 'MATHEUS', 'DE CASTRO SILVA', 'Assistente Social','Castro60');
 
 
