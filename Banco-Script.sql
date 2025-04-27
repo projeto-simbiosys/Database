@@ -77,7 +77,7 @@ CREATE TABLE Relatorio (
 
 -- Exemplos de Inserts:
 
-INSERT INTO USUARIO (EMAIL, NOME, SENHA)
+INSERT INTO USUARIO (EMAIL, NOME, SOBRENOME, CARGO, SENHA)
 VALUES 
     ('matheus.torres@sptech.school', 'MATHEUS', 'FERRO TORRES', 'Assistente Social','Ferro10'),
     ('reynald.costa@sptech.school', 'REYNALD', 'ALBUQUERQUE COSTA', 'Professor', 'Reynald20'),
