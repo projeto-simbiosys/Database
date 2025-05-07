@@ -65,13 +65,13 @@ CREATE TABLE relatorio (
     mes_ano VARCHAR(45) NOT NULL UNIQUE,
     data_atualizacao DATETIME NOT NULL,
     aberto BOOLEAN NOT NULL,
-    fk_encaminhamento INT,
-    fk_outros_numeros INT,
-    fk_acoes_realizadas INT,
+    fkencaminhamento INT,
+    fkoutros_numeros INT,
+    fkacoes_realizadas INT,
     fk_usuario INT,
-    FOREIGN KEY (fk_encaminhamento) REFERENCES encaminhamento(id),
-    FOREIGN KEY (fk_outros_numeros) REFERENCES outros_numeros(id),
-    FOREIGN KEY (fk_acoes_realizadas) REFERENCES acoes_realizadas(id),
+    FOREIGN KEY (fkencaminhamento) REFERENCES encaminhamento(id),
+    FOREIGN KEY (fkoutros_numeros) REFERENCES outros_numeros(id),
+    FOREIGN KEY (fkacoes_realizadas) REFERENCES acoes_realizadas(id),
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
@@ -146,9 +146,9 @@ INSERT INTO relatorio (
     mes_ano,
     data_atualizacao,
     aberto,
-    fk_encaminhamento,
-    fk_outros_numeros,
-    fk_acoes_realizadas,
+    fkencaminhamento,
+    fkoutros_numeros,
+    fkacoes_realizadas,
     fk_usuario
 ) VALUES 
 ('01/2025', NOW(), false, 1, 1, 1, 1),
