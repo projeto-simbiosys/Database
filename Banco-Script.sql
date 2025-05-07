@@ -1,17 +1,17 @@
-CREATE DATABASE SIMBIOSYS;
-USE SIMBIOSYS;
+CREATE DATABASE simbiosys;
+USE simbiosys;
 
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     sobrenome VARCHAR(255) NOT NULL,
     cargo VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE unique,
+    email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL
 );
 
 
-CREATE TABLE Encaminhamento (
+CREATE TABLE encaminhamento (
     id INT AUTO_INCREMENT PRIMARY KEY,
     enc_beneficio_prestacao_continuada INT,
     enc_aposentadoria INT,
@@ -41,7 +41,6 @@ CREATE TABLE outros_numeros (
 );
 
 
-
 CREATE TABLE acoes_realizadas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     total_atividades_grupo_virtual INT,
@@ -61,35 +60,34 @@ CREATE TABLE acoes_realizadas (
     total_pessoas_cursos_profissionalizantes_virtuais INT
 );
 
-CREATE TABLE Relatorio (
+CREATE TABLE relatorio (
     id INT AUTO_INCREMENT PRIMARY KEY,
     mes_ano VARCHAR(45) NOT NULL UNIQUE,
     data_atualizacao DATETIME NOT NULL,
     aberto BOOLEAN NOT NULL,
-    fkencaminhamento INT,
-    fkoutros_numeros INT,
-    fkacoes_realizadas INT,
-    FOREIGN KEY (FKencaminhamento) REFERENCES Encaminhamento(id),
-    FOREIGN KEY (fkoutros_numeros) REFERENCES outros_numeros(id),
-    FOREIGN KEY (fkacoes_realizadas) REFERENCES acoes_realizadas(id),
+    fk_encaminhamento INT,
+    fk_outros_numeros INT,
+    fk_acoes_realizadas INT,
     fk_usuario INT,
-    FOREIGN KEY (fk_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
+    FOREIGN KEY (fk_encaminhamento) REFERENCES encaminhamento(id),
+    FOREIGN KEY (fk_outros_numeros) REFERENCES outros_numeros(id),
+    FOREIGN KEY (fk_acoes_realizadas) REFERENCES acoes_realizadas(id),
+    FOREIGN KEY (fk_usuario) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 -- Exemplos de Inserts:
 
-INSERT INTO USUARIO (EMAIL, NOME, SOBRENOME, CARGO, SENHA)
+INSERT INTO usuario (email, nome, sobrenome, cargo, senha)
 VALUES 
-    ('matheus.torres@sptech.school', 'MATHEUS', 'FERRO TORRES', 'Assistente Social','Ferro10'),
-    ('reynald.costa@sptech.school', 'REYNALD', 'ALBUQUERQUE COSTA', 'Professor', 'Reynald20'),
-    ('marcela.martins@sptech.school', 'MARCELA', 'CARNEIRO DE OLIVEIRA MARTINS', 'Coordenadora', 'Marcela30'),
-    ('vitoria.suliman@sptech.school', 'VITÓRIA', 'LEMES SULIMAN', 'Assistente Social', 'Vitoria40'),
-    ('cintia.ohara@sptech.school', 'CINTIA', 'KAORY OHARA', 'Assistente Social','Cintia50'),
-    ('matheus.csilva@sptech.school', 'MATHEUS', 'DE CASTRO SILVA', 'Assistente Social','Castro60');
-
+    ('matheus.torres@sptech.school', 'Matheus', 'Ferro Torres', 'Assistente Social', 'Ferro10'),
+    ('reynald.costa@sptech.school', 'Reynald', 'Albuquerque Costa', 'Professor', 'Reynald20'),
+    ('marcela.martins@sptech.school', 'Marcela', 'Carneiro de Oliveira Martins', 'Coordenadora', 'Marcela30'),
+    ('vitoria.suliman@sptech.school', 'Vitória', 'Lemes Suliman', 'Assistente Social', 'Vitoria40'),
+    ('cintia.ohara@sptech.school', 'Cíntia', 'Kaory Ohara', 'Assistente Social', 'Cintia50'),
+    ('matheus.csilva@sptech.school', 'Matheus', 'de Castro Silva', 'Assistente Social', 'Castro60');
 
 -- Inserir múltiplos registros na tabela Encaminhamento
-INSERT INTO Encaminhamento (
+INSERT INTO encaminhamento (
     enc_beneficio_prestacao_continuada,
     enc_aposentadoria,
     enc_assistencia_social,
@@ -144,13 +142,13 @@ INSERT INTO acoes_realizadas (
 (12, 6, 8, 5, 7, 9, 3, 4, 2, 6, 3, 55, 35, 45, 25),
 (9, 4, 6, 3, 5, 7, 1, 2, 0, 4, 1, 45, 25, 35, 15);
 
-INSERT INTO Relatorio (
+INSERT INTO relatorio (
     mes_ano,
     data_atualizacao,
-	aberto,
-    fkencaminhamento,
-    fkoutros_numeros,
-    fkacoes_realizadas,
+    aberto,
+    fk_encaminhamento,
+    fk_outros_numeros,
+    fk_acoes_realizadas,
     fk_usuario
 ) VALUES 
 ('01/2025', NOW(), false, 1, 1, 1, 1),
