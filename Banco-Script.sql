@@ -79,16 +79,6 @@ CREATE TABLE Relatorio (
 
 -- Exemplos de Inserts:
 
-INSERT INTO USUARIO (EMAIL, NOME, SOBRENOME, CARGO, SENHA)
-VALUES 
-    ('matheus.torres@sptech.school', 'MATHEUS', 'FERRO TORRES', 'Assistente Social','Ferro10'),
-    ('reynald.costa@sptech.school', 'REYNALD', 'ALBUQUERQUE COSTA', 'Professor', 'Reynald20'),
-    ('marcela.martins@sptech.school', 'MARCELA', 'CARNEIRO DE OLIVEIRA MARTINS', 'Coordenadora', 'Marcela30'),
-    ('vitoria.suliman@sptech.school', 'VITÓRIA', 'LEMES SULIMAN', 'Assistente Social', 'Vitoria40'),
-    ('cintia.ohara@sptech.school', 'CINTIA', 'KAORY OHARA', 'Assistente Social','Cintia50'),
-    ('matheus.csilva@sptech.school', 'MATHEUS', 'DE CASTRO SILVA', 'Assistente Social','Castro60');
-
-
 -- Inserir múltiplos registros na tabela Encaminhamento
 INSERT INTO Encaminhamento (
     enc_beneficio_prestacao_continuada,
