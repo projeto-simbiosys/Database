@@ -1,4 +1,4 @@
-Banco de Dados do Projeto SIMBIOSYS
+## Banco de Dados do Projeto SIMBIOSYS
 <p align="center"> <img src="https://imgur.com/6s2lH3n.png" alt="Simbiosys Logo"> </p> <br>
 
 Para utilizar este repositório siga o roteiro abaixo:
